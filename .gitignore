@@ -1,0 +1,30 @@
+# Dependencias
+node_modules/
+
+# Visual Studio Code
+.vscode/
+
+# Visual Studio
+.vs/
+*.suo
+*.user
+*.sln.docstates
+[Bb]in/
+[Oo]bj/
+
+# Resultados de Cypress
+cypress/videos/
+cypress/screenshots/
+cypress/downloads/
+
+# Variables de entorno y credenciales
+.env
+cypress.env.json
+
+# Logs
+*.log
+npm-debug.log*
+
+# Archivos del sistema
+.DS_Store
+Thumbs.db
