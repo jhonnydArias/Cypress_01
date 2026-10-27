@@ -28,7 +28,18 @@ describe('ParaBank - Registro y Login', () => {
     cy.get('input[name="customer.username"]').type(user.username)
     cy.get('input[name="customer.password"]').type(user.password, { log: false })
     cy.get('input[name="repeatedPassword"]').type(user.password, { log: false })
+
+    // Interceptar la petición de registro
+    cy.intercept('POST', '**/parabank/register.htm').as('registro');  
+
+
     cy.get('input[value="Register"]').click()
+
+    // Esperar y validar la petición
+    cy.wait('@registro').then((interception) => {
+      expect(interception.response.statusCode).to.equal(200);
+    });
+
 
     // Validación del registro
     cy.contains('h1', `Welcome ${user.username}`).should('be.visible')
